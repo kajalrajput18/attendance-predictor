@@ -4,10 +4,12 @@ const cors = require("cors");
 const connectDB = require("./config/db");
 connectDB();
 const app = express();
+const userRoutes = require("./routes/userRoutes");
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use("/api/users", userRoutes);
 
 // Test route
 app.get("/", (req, res) => {
