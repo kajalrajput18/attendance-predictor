@@ -1,14 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const Subject = require("../models/Subject");
-
-router.post("/add", async (req, res) => {
+const protect = require("../middleware/authMiddleware");
+router.post("/add",protect, async (req, res) => {
   try {
-    const { name, userId } = req.body;
-
+    const { name } = req.body;
     const subject = new Subject({
       name,
-      userId,
+      userId: req.user,
     });
 
     await subject.save();
