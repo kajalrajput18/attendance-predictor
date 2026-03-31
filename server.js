@@ -6,11 +6,13 @@ connectDB();
 const app = express();
 const userRoutes = require("./routes/userRoutes");
 const subjectRoutes = require("./routes/subjectRoutes");
+const timetableRoutes = require("./routes/timetableRoutes");
 // Middleware
 app.use(cors());
 app.use(express.json());
 app.use("/api/users", userRoutes);
 app.use("/api/subjects", subjectRoutes);
+app.use("/api/timetable", timetableRoutes);
 
 // Test route
 app.get("/", (req, res) => {
